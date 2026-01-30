@@ -22,6 +22,7 @@ public class Main {
                 System.out.println(count);
                 count--;
                 if (count < 0) {
+                    //TODO: Make the timer play a sound when done.
                     System.out.println("YOU DID IT! CONGRATULATIONS!");
                     timer.cancel();
                 }
