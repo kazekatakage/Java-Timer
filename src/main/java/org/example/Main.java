@@ -22,7 +22,7 @@ public class Main {
                 System.out.println(count);
                 count--;
                 if (count < 0) {
-                    System.out.println("YOU DID IT!");
+                    System.out.println("YOU DID IT! CONGRATULATIONS!");
                     timer.cancel();
                 }
             }
