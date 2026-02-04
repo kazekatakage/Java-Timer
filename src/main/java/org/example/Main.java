@@ -3,8 +3,36 @@ package org.example;
 import java.util.Scanner;
 import java.util.Timer;
 import java.util.TimerTask;
+import java.io.File;
+import javax.sound.sampled.AudioInputStream;
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.Clip;
+import javax.swing.JOptionPane;
 
 public class Main {
+
+    /**
+     * Simple method to play the audio clip.
+     * @param location
+     */
+    public static void playMusic(String location) {
+        try {
+            File musicPath = new File(location);
+
+            if (musicPath.exists()) {
+                AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(musicPath);
+                Clip clip = AudioSystem.getClip();
+                clip.open(audioInputStream);
+                clip.start();
+            } else {
+                System.out.println("Can't find file.");
+            }
+        } catch (Exception e) {
+            System.out.println("Exception thrown. MESSAGE: " + e.getMessage());
+        }
+    }
+
+
     static void main(String[] args) {
 
         // Scanner for user input.
@@ -22,8 +50,10 @@ public class Main {
                 System.out.println(count);
                 count--;
                 if (count < 0) {
-                    //TODO: Make the timer play a sound when done.
-                    System.out.println("YOU DID IT! CONGRATULATIONS!");
+                    System.out.println("TIME'S UP!");
+                    String filePath = "alarm.wav";
+                    playMusic(filePath);
+                    JOptionPane.showMessageDialog(null,"TIME'S UP!");
                     timer.cancel();
                 }
             }
