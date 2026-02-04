@@ -13,7 +13,7 @@ public class Main {
 
     /**
      * Simple method to play the audio clip.
-     * @param location
+     * @param location - File location.
      */
     public static void playMusic(String location) {
         try {
@@ -24,6 +24,7 @@ public class Main {
                 Clip clip = AudioSystem.getClip();
                 clip.open(audioInputStream);
                 clip.start();
+                clip.loop(10);
             } else {
                 System.out.println("Can't find file.");
             }
